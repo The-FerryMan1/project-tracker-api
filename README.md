@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 To install dependencies:
 
 ```sh

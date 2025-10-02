@@ -4,6 +4,7 @@ import {
   varchar,
   integer,
   pgEnum,
+  text,
 } from "drizzle-orm/pg-core";
 
 export const projectStatus = pgEnum("project_status", [
@@ -13,7 +14,8 @@ export const projectStatus = pgEnum("project_status", [
 ]);
 export const userTable = pgTable("user", {
   id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
-  username: varchar("name", { length: 255 }).notNull(),
+  username: varchar("name", { length: 255 }).unique().notNull(),
+  password: text().notNull(),
   createAt: timestamp("createdAt").defaultNow(),
 });
 
