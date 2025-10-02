@@ -1,0 +1,18 @@
+{
+  "name": "project-tracker-api",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.5",
+    "hono": "^4.9.9",
+    "postgres": "^3.4.7",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "drizzle-kit": "^0.31.5",
+    "tsx": "^4.20.6"
+  }
+}
