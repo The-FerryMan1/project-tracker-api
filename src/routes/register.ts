@@ -25,7 +25,7 @@ app.post(
   validator("json", (value, c) => {
     const parsed = schema.safeParse(value);
     if (!parsed.success)
-      return c.json({ message: parsed.error.flatten() }, 400);
+      return c.json({ message: z.prettifyError(parsed.error) }, 400);
     return parsed.data;
   }),
   async (c) => {
