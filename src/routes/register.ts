@@ -11,7 +11,9 @@ const schema = z
   .object({
     username: z
       .string()
-      .max(255, "Letter must not exceed the 255-character limit"),
+      .max(255, "Letter must not exceed the 255-character limit")
+      .nonempty()
+      .trim(),
     password: z.string().min(8, "The password must have 8 characters"),
     confirm: z.string().min(8, "The password must have 8 characters"),
   })
@@ -43,6 +45,8 @@ app.post(
       await database
         .insert(userTable)
         .values({ username, password: hashPassword });
+
+      return c.json({ message: "Account created!" }, 200);
     } catch (error) {
       return c.json({ message: "Internal service error" }, 500);
     }
